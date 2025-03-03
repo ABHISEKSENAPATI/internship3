@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Intern</title>
+	<link rel="stylesheet" type="text/css" href="intern3.css">
+</head>
+<body>
+<header>
+    <h1><center><b>My To-Do List</b></center></h1>
+</header>
+<form onsubmit="return false;">
+    <center><input type="text" id="input-box" name="todo" placeholder="Add your list"></center>
+    <button type="button" onclick="addtask()">
+        Add
+        <i class="fas fa-plus-circle fa-lg"></i>
+    </button>
+    <div class="select">
+        <center>
+            <select>
+                <option>All</option>
+                <option>Completed</option>
+                <option>Incomplete</option>
+            </select>
+        </center>
+    </div>
+</form>
+<ul id="list-container">
+</ul>
+
+<script>
+    const inputBox = document.getElementById("input-box");
+    const listContainer = document.getElementById("list-container");
+
+    function addtask() {
+        if (inputBox.value.trim() === '') {
+            alert("You must write something");
+        } else {
+            let li = document.createElement("li");
+            li.textContent = inputBox.value;
+            listContainer.appendChild(li);
+            inputBox.value = "";
+
+            // Adding delete functionality
+            let span = document.createElement("span");
+            span.innerHTML = "\u00d7";
+            span.style.cursor = "pointer";
+            span.onclick = function() {
+                li.remove();
+            };
+            li.appendChild(span);
+        }
+
+    }
+</script>
+</body>
+</html>
+
+</body>
+</html>
